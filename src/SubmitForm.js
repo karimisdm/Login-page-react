@@ -9,14 +9,12 @@ function SubmitForm(){
     age: yup.number().positive().min(15).required(),
     password: yup.string().min(4).max(10).matches(/[a-z]+/).matches(/[A-Z]+/).matches(/\d+/).required("Password is required"),
     confirmpassword: yup.string().oneOf([yup.ref("password")],"Password not match").required(),
-
    });
 
     const {register, handleSubmit, formState:{errors}}=useForm({resolver: yupResolver(schema)});
 
     function onFormSubmit(data){
       console.log(data)
-
     }
 
   return(
